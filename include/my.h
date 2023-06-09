@@ -66,5 +66,19 @@
 
     void print_only_species(tag_t *head);
 
-    void print_reactions(tag_t *head, char *to_check, int flag);
+    void print_reactions(tag_t *head, char *to_check, int flag,
+    char *reversible);
+
+    char *get_reaction(char *str, char *reaction);
+
+    node_t *add_react(node_t *head, int react, char *reaction);
+
+    tag_t *get_references(tag_t *head);
+
+    void print_react_no_e(tag_t *tmp, tag_t *head, char *to_check);
+
+    void print_react_e(tag_t *tmp, tag_t *head,
+    char *to_check, char *reversible);
+
+    int shortener(tag_t *tmp, char *to_check, tag_t *head);
 #endif /* !MY_H */

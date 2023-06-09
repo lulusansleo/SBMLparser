@@ -38,7 +38,7 @@ node_t *add_react(node_t *head, int react, char *reaction)
     node_t *reactant = malloc(sizeof (node_t));
     char reacto[2] = "0";
 
-    reacto[1] += react;
+    reacto[0] += react;
     reactant->name = strdup("reactant");
     reactant->value = strdup(reacto);
     new->name = strdup("reaction");
@@ -51,4 +51,14 @@ node_t *add_react(node_t *head, int react, char *reaction)
         tmp = tmp->next;
     tmp->next = new;
     return head;
+}
+
+int shortener(tag_t *tmp, char *to_check, tag_t *head)
+{
+    if (strcmp(tmp->name, "species") == 0 &&
+    check_id(tmp, to_check, "id")) {
+        print_species(head, to_check);
+        return 1;
+    }
+    return 0;
 }

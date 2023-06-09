@@ -34,24 +34,22 @@ static void print_compartment(tag_t *head, char *to_check)
 static void print_i(tag_t *head, int flag, char *to_check)
 {
     tag_t *tmp = head;
-    while (tmp != NULL) {
+    do {
         if (strcmp(tmp->name, "compartment") == 0 &&
         check_id(tmp, to_check, "id")) {
             print_compartment(head, to_check);
             return;
         }
-        if (strcmp(tmp->name, "species") == 0 &&
-        check_id(tmp, to_check, "id")) {
-            print_species(head, to_check);
+        if (shortener(tmp, to_check, head))
             return;
-        }
         if (strcmp(tmp->name, "reaction") == 0 &&
         check_id(tmp, to_check, "id")) {
-            print_reactions(head, to_check, flag);
+            print_reactions(head, to_check, flag,
+            what_attribute("reversible", tmp->attributes));
             return;
         }
         tmp = tmp->next;
-    }
+    } while (tmp != NULL);
     print_only_species(head);
 }
 
@@ -66,10 +64,10 @@ void print_functions(tag_t *head, char **av)
             flag += 1;
         }
         if (strcmp(av[i], "-e") == 0) {
-            flag += 1;
+            flag += 2;
         }
     }
-    if (!flag)
+    if (flag % 2 == 0)
         print_tags(head);
     else
         print_i(head, flag, to_check);

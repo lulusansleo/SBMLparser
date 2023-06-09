@@ -43,7 +43,7 @@ void print_species(tag_t *head, char *to_check)
 {
     tag_t *tmp = get_references(head);
 
-    sort_tags_special(tmp, "species");
+    sort_tags_special(tmp, "reaction");
     printf("List of reactions consuming species %s (quantities)\n", to_check);
     while (tmp != NULL) {
         if (strcmp(what_attribute("species", tmp->attributes), to_check) == 0) {
@@ -55,6 +55,13 @@ void print_species(tag_t *head, char *to_check)
     }
 }
 
-void print_reactions(tag_t *head, char *to_check, int flag)
+void print_reactions(tag_t *head, char *to_check, int flag, char *reversible)
 {
+    tag_t *tmp = get_references(head);
+    sort_tags_special(tmp, "species");
+    if (flag == 1) {
+        print_react_no_e(tmp, head, to_check);
+    } else if (flag == 3) {
+        print_react_e(tmp, head, to_check, reversible);
+    }
 }

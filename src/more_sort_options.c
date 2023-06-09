@@ -30,7 +30,6 @@ tag_t *get_references(tag_t *head)
 {
     tag_t *tmp = head;
     tag_t *tmp_head = head;
-    tag_t *set_next = tmp;
 
     while (strcmp(tmp_head->name, "speciesReference") != 0)
         tmp_head = tmp_head->next;
