@@ -19,14 +19,18 @@ static void print_usage(void)
 
 int main(int ac, char **av)
 {
-    char *str = read_file(av[1]);
+    char *str = NULL;
     tag_t *tags = NULL;
 
     if (ac == 2 && strcmp(av[1], "-h") == 0) {
         print_usage();
-        free(str);
         return 0;
     }
+    if (error_handling(ac, av)) {
+        print_usage();
+        return 84;
+    }
+    str = read_file(av[1]);
     tags = parser(str);
     print_tags(tags);
     free_tags(tags);
