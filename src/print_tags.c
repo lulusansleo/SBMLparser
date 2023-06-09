@@ -68,6 +68,7 @@ void print_functions(tag_t *head, char **av)
         print_tags(head);
     else
         print_i(head, flag, to_check);
+    free(to_check);
 }
 
 void print_tags(tag_t *head)
@@ -84,4 +85,5 @@ void print_tags(tag_t *head)
         check = strcpy(check, tmp->name);
         tmp = tmp->next;
     }
+    free(check);
 }

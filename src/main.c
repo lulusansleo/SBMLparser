@@ -30,7 +30,8 @@ int main(int ac, char **av)
         print_usage();
         return 84;
     }
-    str = read_file(av[1]);
+    if (!(str = read_file(av[1])))
+        return 84;
     tags = parser(str);
     print_functions(tags, av);
     free_tags(tags);
