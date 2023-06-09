@@ -44,4 +44,9 @@
 
     void print_tags(tag_t *head);
 
+    void sort_attributes(node_t *head);
+
+    int error_handling(int ac, char **av);
+
+    void sort_tags(tag_t *head);
 #endif /* !MY_H */

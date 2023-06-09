@@ -45,6 +45,7 @@ static tag_t *add_tag(tag_t *tags, char *line)
     new_tag->next = NULL;
     cpy = copy_name(cpy, new_tag->name);
     new_tag->attributes = get_attributes(cpy);
+    sort_attributes(new_tag->attributes);
     if (tags == NULL)
         return new_tag;
     while (tmp->next != NULL)
@@ -64,5 +65,6 @@ tag_t *parser(char *str)
         }
     }
     free_array(lines);
+    sort_tags(tags);
     return tags;
 }

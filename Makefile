@@ -14,7 +14,8 @@ SRC = 	src/open_and_read/open_read.c \
 		src/free_lists.c \
 		src/node_add.c \
 		src/print_tags.c \
-		src/error_handling.c
+		src/error_handling.c \
+		src/sort_args.c
 
 OBJ =	$(SRC:.c=.o)
 
