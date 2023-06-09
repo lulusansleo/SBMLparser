@@ -30,6 +30,8 @@ static int count_words(char const *str)
             i++;
         }
         wcount += add;
+        if (str[i] == '\0')
+            return wcount;
         add = 0;
     }
     return wcount;
@@ -64,12 +66,14 @@ char **my_str_to_word_array_synthesis(char const *str)
     int local_i = 0;
 
     array = malloc(sizeof (char *) * (wcount + 1));
-    array[wcount] = NULL;
+    array[wcount] = 0;
     for (*i = 0, j = 0; str[*i] != '\0'; *i += 1) {
         if (is_alpha_num(str[*i])) {
             array[j] = write_word(str, i);
             j++;
         }
+        if (str[*i] == '\0')
+            return array;
     }
     return array;
 }

@@ -34,7 +34,7 @@ void print_only_species(tag_t *head)
     sort_tags_special(tmp, "name");
     printf("List of species\n");
     while (tmp != NULL) {
-        printf("%s\n", what_attribute("name", tmp->attributes));
+        printf("--->%s\n", what_attribute("name", tmp->attributes));
         tmp = tmp->next;
     }
 }
