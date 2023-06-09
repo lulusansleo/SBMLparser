@@ -45,7 +45,7 @@ static char *write_word(char const *str, int *i)
         len++;
     word = malloc(sizeof (char) * (len + 1));
     if (!word)
-        return NULL;
+        return 0;
     word[len] = '\0';
     while (is_alpha_num(str[*i])) {
         word[a] = str[*i];
@@ -71,7 +71,7 @@ char **my_str_to_word_array_synthesis(char const *str)
             j++;
         }
         if (!array[j])
-            return NULL;
+            return 0;
     }
     return array;
 }
