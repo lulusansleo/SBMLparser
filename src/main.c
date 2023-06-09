@@ -32,7 +32,7 @@ int main(int ac, char **av)
     }
     str = read_file(av[1]);
     tags = parser(str);
-    print_tags(tags);
+    print_functions(tags, av);
     free_tags(tags);
     free(str);
     return 0;

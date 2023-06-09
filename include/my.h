@@ -49,4 +49,14 @@
     int error_handling(int ac, char **av);
 
     void sort_tags(tag_t *head);
+
+    void print_functions(tag_t *head, char **av);
+
+    int check_id(tag_t *tag, char *to_check, char *category);
+
+    char *what_attribute(char *want, node_t *head);
+
+    void sort_tags_special(tag_t *head, char *want);
+
+    void swap(tag_t **first, tag_t **second);
 #endif /* !MY_H */

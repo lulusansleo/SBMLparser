@@ -18,9 +18,12 @@ int error_handling(int ac, char **av)
 {
     if (ac <= 1)
         return 1;
-    for (int i = 0; av[i]; i++) {
-        if (strcmp(av[i], "-i") == 0 && !av[i + 1])
+    if (ac == 2)
+        return 0;
+    for (int i = 2; av[i]; i++) {
+        if (strcmp(av[i], "-i") == 0 && !av[i + 1]) {
             return 1;
+        }
         if (av[i][0] == '-' && !is_flag(av[i][1]))
             return 1;
     }
