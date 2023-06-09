@@ -70,8 +70,6 @@ char **my_str_to_word_array_synthesis(char const *str)
             array[j] = write_word(str, i);
             j++;
         }
-        if (!array[j])
-            return NULL;
     }
     return array;
 }
