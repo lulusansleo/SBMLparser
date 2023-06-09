@@ -28,7 +28,7 @@ MAIN =	src/main.c
 
 OBJ_MAIN =	$(MAIN:.c=.o)
 
-NAME =	SBML_parser
+NAME =	SBMLparser
 
 EXEC = ./$(NAME)
 
