@@ -65,4 +65,6 @@
     void print_species(tag_t *head, char *to_check);
 
     void print_only_species(tag_t *head);
+
+    void print_reactions(tag_t *head, char *to_check, int flag);
 #endif /* !MY_H */

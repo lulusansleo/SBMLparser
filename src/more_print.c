@@ -41,13 +41,20 @@ void print_only_species(tag_t *head)
 
 void print_species(tag_t *head, char *to_check)
 {
-    tag_t *tmp = get_reactions(head);
+    tag_t *tmp = get_references(head);
 
-    sort_tags_special(tmp, "id");
+    sort_tags_special(tmp, "species");
     printf("List of reactions consuming species %s (quantities)\n", to_check);
     while (tmp != NULL) {
-        if (check_id(tmp, to_check, "reaction"))
-            printf("--->%s\n", what_attribute("id", tmp->attributes));
+        if (strcmp(what_attribute("species", tmp->attributes), to_check) == 0) {
+            printf("--->%s (%s)\n",
+            what_attribute("reaction", tmp->attributes),
+            what_attribute("stoichiometry", tmp->attributes));
+        }
         tmp = tmp->next;
     }
+}
+
+void print_reactions(tag_t *head, char *to_check, int flag)
+{
 }

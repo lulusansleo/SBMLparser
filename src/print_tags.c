@@ -12,7 +12,8 @@ static void print_attributes(node_t *head)
     node_t *tmp = head;
 
     while (tmp != NULL) {
-        printf("--->%s\n", tmp->name);
+        if (strstr(tmp->name, "react") == NULL)
+            printf("--->%s\n", tmp->name);
         tmp = tmp->next;
     }
 }
@@ -33,7 +34,6 @@ static void print_compartment(tag_t *head, char *to_check)
 static void print_i(tag_t *head, int flag, char *to_check)
 {
     tag_t *tmp = head;
-
     while (tmp != NULL) {
         if (strcmp(tmp->name, "compartment") == 0 &&
         check_id(tmp, to_check, "id")) {
@@ -43,6 +43,11 @@ static void print_i(tag_t *head, int flag, char *to_check)
         if (strcmp(tmp->name, "species") == 0 &&
         check_id(tmp, to_check, "id")) {
             print_species(head, to_check);
+            return;
+        }
+        if (strcmp(tmp->name, "reaction") == 0 &&
+        check_id(tmp, to_check, "id")) {
+            print_reactions(head, to_check, flag);
             return;
         }
         tmp = tmp->next;
@@ -68,7 +73,6 @@ void print_functions(tag_t *head, char **av)
         print_tags(head);
     else
         print_i(head, flag, to_check);
-    free(to_check);
 }
 
 void print_tags(tag_t *head)

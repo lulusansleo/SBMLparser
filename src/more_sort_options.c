@@ -26,6 +26,18 @@ tag_t *get_species(tag_t *head)
     return tmp_head;
 }
 
+tag_t *get_references(tag_t *head)
+{
+    tag_t *tmp = head;
+    tag_t *tmp_head = head;
+    tag_t *set_next = tmp;
+
+    while (strcmp(tmp_head->name, "speciesReference") != 0)
+        tmp_head = tmp_head->next;
+    tmp = tmp_head;
+    return tmp_head;
+}
+
 void sort_tags_special(tag_t *head, char *want)
 {
     int swap_check = 0;
