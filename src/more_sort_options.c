@@ -22,6 +22,7 @@ tag_t *get_species(tag_t *head)
     while (set_next->next != tmp)
         set_next = set_next->next;
     set_next->next = NULL;
+    free_tags(tmp);
     return tmp_head;
 }
 

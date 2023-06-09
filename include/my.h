@@ -59,4 +59,10 @@
     void sort_tags_special(tag_t *head, char *want);
 
     void swap(tag_t **first, tag_t **second);
+
+    tag_t *get_species(tag_t *head);
+
+    void print_species(tag_t *head, char *to_check);
+
+    void print_only_species(tag_t *head);
 #endif /* !MY_H */

@@ -37,10 +37,17 @@ static void print_i(tag_t *head, int flag, char *to_check)
     while (tmp != NULL) {
         if (strcmp(tmp->name, "compartment") == 0 &&
         check_id(tmp, to_check, "id")) {
-            print_compartment(tmp, to_check);
+            print_compartment(head, to_check);
+            return;
+        }
+        if (strcmp(tmp->name, "species") == 0 &&
+        check_id(tmp, to_check, "id")) {
+            print_species(head, to_check);
+            return;
         }
         tmp = tmp->next;
     }
+    print_only_species(head);
 }
 
 void print_functions(tag_t *head, char **av)

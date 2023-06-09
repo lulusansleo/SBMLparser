@@ -18,7 +18,8 @@ SRC = 	src/open_and_read/open_read.c \
 		src/sort_args.c \
 		src/check_id.c \
 		src/get_attribute.c \
-		src/more_sort_options.c
+		src/more_sort_options.c \
+		src/more_print.c
 
 OBJ =	$(SRC:.c=.o)
 
