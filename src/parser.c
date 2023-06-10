@@ -11,9 +11,10 @@ static char *copy_name(char *line, char *dest)
 {
     int j = 0;
 
-    while (!isalnum(*line))
+    while (!isgraph(*line))
         ++line;
-    while (isalnum(*line)) {
+    ++line;
+    while (isgraph(*line)) {
         dest[j] = *line;
         j++;
         ++line;
@@ -43,7 +44,6 @@ static tag_t *add_tag(tag_t *tags, char *line, int react, char *reaction)
     tag_t *new_tag = malloc(sizeof(tag_t));
     tag_t *tmp = tags;
     char *cpy = line;
-
     new_tag->name = malloc(sizeof (char) * (get_tag_size(cpy) + 1));
     new_tag->next = NULL;
     cpy = copy_name(cpy, new_tag->name);
@@ -79,7 +79,7 @@ tag_t *parser(char *str)
     for (int i = 0; lines[i] != NULL; i++) {
         react = is_list(lines[i], react);
         reaction = get_reaction(lines[i], reaction);
-        if (strstr(lines[i], "/>") != NULL || strstr(lines[i], "\">") != NULL) {
+        if (check_if_parse(lines[i])) {
             tags = add_tag(tags, lines[i], react, reaction);
         }
     }

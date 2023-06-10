@@ -58,6 +58,8 @@ void sort_attributes(node_t *head)
     node_t *tmp;
     node_t *previous = NULL;
 
+    if (head == NULL)
+        return;
     do {
         swap_check = 0;
         tmp = head;

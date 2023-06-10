@@ -7,6 +7,36 @@
 
 #include "my.h"
 
+int get_tag_size(char *line)
+{
+    int j = 0;
+
+    while (!isgraph(*line))
+        ++line;
+    while (isgraph(*line)) {
+        j++;
+        ++line;
+    }
+    return j;
+}
+
+int check_if_parse(char *lines)
+{
+    char *first = strstr(lines, "/>");
+    char *second = strstr(lines, "\">");
+    int ret = 0;
+
+    if (first != NULL) {
+        if (first[2] == '\0')
+            ret = 1;
+        }
+    if (second != NULL) {
+        if (second[2] == '\0')
+            ret = 1;
+        }
+    return ret;
+}
+
 char *get_reaction(char *str, char *reaction)
 {
     char *ptr = strstr(str, "id=");
