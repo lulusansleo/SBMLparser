@@ -22,7 +22,7 @@ int error_handling(int ac, char **av)
         return 0;
     for (int i = 2; av[i]; i++) {
         if (strcmp(av[i], "-i") == 0 && !av[i + 1]) {
-            return 1;
+            exit(0);
         }
         if (av[i][0] == '-' && !is_flag(av[i][1]))
             return 1;

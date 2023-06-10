@@ -79,7 +79,7 @@ tag_t *parser(char *str)
     for (int i = 0; lines[i] != NULL; i++) {
         react = is_list(lines[i], react);
         reaction = get_reaction(lines[i], reaction);
-        if (strstr(lines[i], "/>") != NULL || strstr(lines[i], " >") != NULL) {
+        if (strstr(lines[i], "/>") != NULL || strstr(lines[i], "\">") != NULL) {
             tags = add_tag(tags, lines[i], react, reaction);
         }
     }
