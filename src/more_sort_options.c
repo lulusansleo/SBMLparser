@@ -12,11 +12,11 @@ tag_t *get_species(tag_t *head)
     tag_t *tmp = head;
     tag_t *tmp_head = head;
     tag_t *set_next = tmp;
-
     while (strcmp(tmp_head->name, "species") != 0)
         tmp_head = tmp_head->next;
     tmp = tmp_head;
-    while (strcmp(tmp->name, "speciesReference") != 0) {
+    while (tmp != NULL &&
+    strcmp(tmp->name, "speciesReference") != 0) {
         tmp = tmp->next;
     }
     while (set_next->next != tmp)
@@ -30,10 +30,18 @@ tag_t *get_references(tag_t *head)
 {
     tag_t *tmp = head;
     tag_t *tmp_head = head;
-
+    tag_t *set_next = tmp;
     while (strcmp(tmp_head->name, "speciesReference") != 0)
         tmp_head = tmp_head->next;
     tmp = tmp_head;
+    while (tmp != NULL &&
+    strcmp(tmp->name, "speciesReference") == 0) {
+        tmp = tmp->next;
+    }
+    while (set_next->next != tmp)
+        set_next = set_next->next;
+    set_next->next = NULL;
+    free_tags(tmp);
     return tmp_head;
 }
 
