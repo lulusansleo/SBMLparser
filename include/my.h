@@ -81,4 +81,6 @@
     char *to_check, char *reversible);
 
     int shortener(tag_t *tmp, char *to_check, tag_t *head);
+
+    int get_tag_size(char *line);
 #endif /* !MY_H */

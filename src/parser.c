@@ -27,7 +27,7 @@ static node_t *get_attributes(char *line, int react, char *reaction)
     node_t *head = NULL;
 
     for (size_t i = 0; i < strlen(line); i++) {
-        if (isalnum(*line)) {
+        if (isgraph(*line)) {
             head = add_node(head, &line);
         }
         ++line;
@@ -44,7 +44,7 @@ static tag_t *add_tag(tag_t *tags, char *line, int react, char *reaction)
     tag_t *tmp = tags;
     char *cpy = line;
 
-    new_tag->name = malloc(sizeof (char) * 50);
+    new_tag->name = malloc(sizeof (char) * (get_tag_size(cpy) + 1));
     new_tag->next = NULL;
     cpy = copy_name(cpy, new_tag->name);
     new_tag->attributes = get_attributes(cpy, react, reaction);
